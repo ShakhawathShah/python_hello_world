@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  hello-job:
+    docker:
+      - image: cimg/python:3.8 # the primary container, where your job's commands are run
+    steps:
+      - checkout # check out the code in the project directory
+      - run: python --version # run the `echo` command
+      - run: python hello.py # run the `echo` command
+      - run: python ./src/hello_again.py # run the `echo` command
+
+workflows:
+  my-workflow:
+    jobs:
+      - hello-job
